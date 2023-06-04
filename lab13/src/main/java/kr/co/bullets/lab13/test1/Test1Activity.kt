@@ -16,7 +16,9 @@ class Test1Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+            // 처리자
             ActivityResultContracts.StartActivityForResult()
+            // 콜백 등록
         ) {
             val resultData = it.data?.getStringExtra("result")
             binding.resultView.text = "result : $resultData"
