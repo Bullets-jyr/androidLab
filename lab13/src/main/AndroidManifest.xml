@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
         <activity
+            android:name=".test4.Test4Activity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
             android:name=".test3.Test3Activity"
             android:exported="true">
             <intent-filter>
