@@ -9,9 +9,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
         <service
-            android:name=".test1.MyService"
+            android:name=".test2.MyService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity
+            android:name=".test2.Test2Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".test1.MyService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".test1.Test1Activity"
