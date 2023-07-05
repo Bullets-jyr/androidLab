@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
         <activity
+            android:name=".test2.Test2Activity"
+            android:exported="true" />
+        <activity
             android:name=".test1.Test1Activity"
             android:exported="true">
             <intent-filter>
