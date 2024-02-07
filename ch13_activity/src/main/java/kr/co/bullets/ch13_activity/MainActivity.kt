@@ -23,8 +23,10 @@ class MainActivity : AppCompatActivity() {
 
         //add................................
 
+        // callback
         val requestLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()){
+            ActivityResultContracts.StartActivityForResult()
+        ){
             it.data!!.getStringExtra("result")?.let {
                 datas?.add(it)
                 adapter.notifyDataSetChanged()

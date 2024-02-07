@@ -16,7 +16,9 @@ class Test4Activity : AppCompatActivity() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
             window.setDecorFitsSystemWindows(false)
             val controller = window.insetsController
+            // 화면 제어
             if(controller != null){
+                // 숨겨라
                 controller.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
                 controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
