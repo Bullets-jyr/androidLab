@@ -32,9 +32,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))!!.apply {
-            when(getIntExtra(BatteryManager.EXTRA_STATUS, -1)){
+            when (getIntExtra(BatteryManager.EXTRA_STATUS, -1)) {
+                // 전원 공급
                 BatteryManager.BATTERY_STATUS_CHARGING -> {
-                    when(getIntExtra(BatteryManager.EXTRA_PLUGGED, -1)){
+                    when (getIntExtra(BatteryManager.EXTRA_PLUGGED, -1)){
                         BatteryManager.BATTERY_PLUGGED_USB -> {
                             binding.chargingResultView.text = "USB Plugged"
                             binding.chargingImageView.setImageBitmap(
@@ -63,12 +64,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                if (ContextCompat.checkSelfPermission(
-                        this,
-                        "android.permission.POST_NOTIFICATIONS"
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (ContextCompat.checkSelfPermission(this, "android.permission.POST_NOTIFICATIONS") == PackageManager.PERMISSION_GRANTED) {
                     val intent = Intent(this, MyReceiver::class.java)
                     sendBroadcast(intent)
                 } else {
@@ -78,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                 }
-            }else {
+            } else {
                 val intent = Intent(this, MyReceiver::class.java)
                 sendBroadcast(intent)
             }

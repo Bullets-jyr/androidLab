@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!-- 브로드캐스트 리시버 -->
         <receiver
             android:name=".test1.MyReceiver"
             android:enabled="true"
