@@ -17,6 +17,7 @@ class Test4Activity : AppCompatActivity() {
         val binding = ActivityTest4Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 시스템 기본 효과음
         binding.button1.setOnClickListener {
             val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             val ringtone = RingtoneManager.getRingtone(applicationContext, uri)

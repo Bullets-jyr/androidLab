@@ -14,7 +14,12 @@ class Test1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test1)
 
-        val requestLanuncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        // 준비
+        val requestLauncher = registerForActivityResult(
+            // 처리자
+            ActivityResultContracts.RequestPermission()
+            // 콜백 등록
+        ) { isGranted ->
             if (isGranted) {
                 Log.d("kkang", "callback... granted...")
             } else {
@@ -22,11 +27,12 @@ class Test1Activity : AppCompatActivity() {
             }
         }
 
+        // 확인
         val status = ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_FINE_LOCATION")
         if (status == PackageManager.PERMISSION_GRANTED) {
             Log.d("kkang", "granted...")
         } else {
-            requestLanuncher.launch("android.permission.ACCESS_FINE_LOCATION")
+            requestLauncher.launch("android.permission.ACCESS_FINE_LOCATION")
         }
     }
 }

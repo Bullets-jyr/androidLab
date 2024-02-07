@@ -9,7 +9,11 @@ android {
 
     defaultConfig {
         applicationId "kr.co.bullets.ch10_notification"
+        // API 레벨 설정: minSdk, targetSdk
+        // 결국 이 앱은 33 버전의 API로 개발하지만 21 버전 기기에서도 오류가 발생하지 않고 동작해야합니다.
+        // 이 앱은 21 버전(안드로이드 5.0 롤리팝) 기기부터 설치할 수 있습니다.
         minSdk 21
+        // targetSdk에 설정한 33 버전의 API로 앱을 개발한다는 의미입니다.
         targetSdk 33
         versionCode 1
         versionName "1.0"

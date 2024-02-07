@@ -20,9 +20,14 @@ class Test3Activity : AppCompatActivity() {
             AlertDialog.Builder(this).run {
                 setTitle("items test")
                 setIcon(android.R.drawable.ic_dialog_alert)
-                setMultiChoiceItems(items, booleanArrayOf(true, false, true), object : DialogInterface.OnMultiChoiceClickListener {
-                    override fun onClick(dialog: DialogInterface?, which: Int, isChecked: Boolean) {
-                        Log.d("kkang", "${items[which]} 이 ${if (isChecked) "선택되었습니다." else "선택 해제되었습니다."}")
+                setMultiChoiceItems(
+                    items,
+                    // 초기상태
+                    booleanArrayOf(true, false, true),
+                    // 이벤트 핸들러
+                    object : DialogInterface.OnMultiChoiceClickListener {
+                        override fun onClick(dialog: DialogInterface?, which: Int, isChecked: Boolean) {
+                            Log.d("kkang", "${items[which]} 이 ${if (isChecked) "선택되었습니다." else "선택 해제되었습니다."}")
                     }
                 })
                 setPositiveButton("닫기", null)

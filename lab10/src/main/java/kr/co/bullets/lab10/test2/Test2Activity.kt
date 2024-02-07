@@ -15,6 +15,7 @@ import kr.co.bullets.lab10.databinding.ActivityTest2Binding
 
 class Test2Activity : AppCompatActivity() {
 
+    // 내가 알아서 할게
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,9 @@ class Test2Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button1.setOnClickListener {
+            // API Level 1
             val toast = Toast.makeText(this, "종료하려면 한번 더 누르세요...", Toast.LENGTH_SHORT)
+            // API Level 30
             toast.addCallback(object : Toast.Callback() {
                 override fun onToastHidden() {
                     super.onToastHidden()

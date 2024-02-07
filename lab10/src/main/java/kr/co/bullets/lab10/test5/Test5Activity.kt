@@ -18,7 +18,9 @@ class Test5Activity : AppCompatActivity() {
         val binding = ActivityTest5Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // API Level 33
         val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            // 모든 permission이 허락이 되었을 경우
             if (it.all { permission -> permission.value == true}) {
                 noti()
             } else {
@@ -27,12 +29,14 @@ class Test5Activity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
+            // API Level 33 이상
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 if (ContextCompat.checkSelfPermission(this, "android.permission.POST_NOTIFICATIONS") == PackageManager.PERMISSION_GRANTED) {
                     noti()
                 } else {
                     permissionLauncher.launch(arrayOf("android.permission.POST_NOTIFICATIONS"))
                 }
+            // API Level 33 미만
             } else {
                 noti()
             }
@@ -40,17 +44,26 @@ class Test5Activity : AppCompatActivity() {
     }
 
     fun noti() {
+        // 1) 시스템
         val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        // 2) 빌더
         val builder: NotificationCompat.Builder
+
+        // 3) 채널 개념
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel("one", "one channel", NotificationManager.IMPORTANCE_LOW)
             channel.description = "one description"
+            // 채널을 시스템에 등록합니다.
             manager.createNotificationChannel(channel)
+            // 채널을 적용한 빌더
             builder = NotificationCompat.Builder(this, "one")
         } else {
+            // 빌더
             builder = NotificationCompat.Builder(this)
         }
 
+        // 4) 빌더 세팅
         builder.setSmallIcon(android.R.drawable.ic_notification_overlay)
         builder.setWhen(System.currentTimeMillis())
         builder.setContentTitle("Title")

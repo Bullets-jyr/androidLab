@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!-- <permission>: 기능을 보호하려는 앱의 매니페스트 파일에 설정합니다. -->
+    <!-- <uses-permission>: 퍼미션으로 보호된 기능을 사용하려는 앱의 매니페스트 파일에 설정합니다. -->
+    <!-- API Level33 버전부터는 앱에서 알림을 띄우기 위해 사용자에게 퍼미션(허가)를 요청해야합니다. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -9,10 +11,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
+        <activity
+            android:name=".test1.Test1Activity"
+            android:exported="false" />
+
         <receiver
             android:name=".ReplyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
